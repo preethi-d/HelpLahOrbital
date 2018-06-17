@@ -5,4 +5,7 @@
     <string name="sign_up">sign up</string>
     <string name="log_in">Log In</string>
     <string name="home_page">Home page</string>
+    <string name="create_your_account_now">Create your account now!</string>
+    <string name="password2">Password</string>
+    <string name="create">CREATE</string>
 </resources>
