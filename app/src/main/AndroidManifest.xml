@@ -37,7 +37,15 @@
         <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation_acitivty"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FacultyScrolling"
+            android:label="@string/title_activity_faculty_scrolling"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".socmodsscrolling"
+            android:label="@string/title_activity_socmodsscrolling"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
