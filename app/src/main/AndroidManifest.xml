@@ -45,6 +45,10 @@
         <activity
             android:name=".socmodsscrolling"
             android:label="@string/title_activity_socmodsscrolling"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".AskQuestion"
+            android:label="@string/title_activity_ask_question"
             android:theme="@style/AppTheme"></activity>
     </application>
 

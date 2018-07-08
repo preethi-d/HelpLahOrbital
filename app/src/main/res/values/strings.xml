@@ -115,4 +115,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_socmodsscrolling">School of Computing</string>
+    <string name="title_activity_ask_question">Asking Questions</string>
 </resources>
