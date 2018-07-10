@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     EditText username;
@@ -22,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     Button sign_up;
     Button log_in;
     private FirebaseAuth auth;
+
+    private static final String TAG = "MainActivity";
 
 
     @Override
@@ -34,6 +43,33 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.editText2);
         log_in = (Button) findViewById(R.id.button);
         sign_up = (Button) findViewById(R.id.button2);
+
+        //DATABASE CODE HERE
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello World!");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //this method is called once with the initial value and agaain wheneve
+                // the data at this location is updated
+                String value = dataSnapshot.getValue(String.class);
+                Log.d(TAG, "Value is: " + value);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+
+            }
+
+        });
+
+        //DATABASE CODE STOPS HERE
+
 
         //firebase auth instance
         auth = FirebaseAuth.getInstance();
@@ -69,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
                                                               // error occurred
                                                               Toast.makeText(MainActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
                                                           } else {
+                                                              //log in success, update UI with signed-in users information
+                                                              //FirebaseUser user = auth.getCurrentUser();
+                                                              //updateUI(user);
                                                               openHomeActivity();
                                                           }
 
@@ -85,6 +124,14 @@ public class MainActivity extends AppCompatActivity {
                 openSignUpActivity();
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        //FirebaseUser currentUser = auth.getCurrentUser();
+        //updateUI(currentUser);
     }
 
 
