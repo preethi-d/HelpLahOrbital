@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     Button log_in;
     private FirebaseAuth auth;
 
-    private static final String TAG = "MainActivity";
 
 
     @Override
@@ -38,41 +37,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initializing xml ids for all buttons and widgets
-        username = (EditText) findViewById(R.id.editText);
-        password = (EditText) findViewById(R.id.editText2);
-        log_in = (Button) findViewById(R.id.button);
-        sign_up = (Button) findViewById(R.id.button2);
-
-        //DATABASE CODE HERE
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-
-        myRef.setValue("Hello World!");
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //this method is called once with the initial value and agaain wheneve
-                // the data at this location is updated
-                String value = dataSnapshot.getValue(String.class);
-                Log.d(TAG, "Value is: " + value);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-
-            }
-
-        });
-
-        //DATABASE CODE STOPS HERE
 
 
         //firebase auth instance
         auth = FirebaseAuth.getInstance();
+        log_in = findViewById(R.id.loginbutton);
+        sign_up = findViewById(R.id.signupbutton);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
 
         log_in.setOnClickListener(new View.OnClickListener() {
                                       @Override

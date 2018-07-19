@@ -40,7 +40,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AskActivity" />
         <activity android:name=".ForumActivity" />
-        <activity android:name=".ModulesActivity"></activity>
+        <activity android:name=".ModulesActivity" />
+        <activity android:name=".Question"></activity>
     </application>
 
 </manifest>

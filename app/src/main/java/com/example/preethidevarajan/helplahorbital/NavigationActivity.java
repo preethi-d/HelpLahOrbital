@@ -1,5 +1,6 @@
 package com.example.preethidevarajan.helplahorbital;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class NavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Button SOC;
@@ -23,6 +26,15 @@ public class NavigationActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_activity);
+
+        // Check if user is logged in
+        // If user is not logged in, direct user to login page
+       /* if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        */
 
         SOC = (Button) findViewById(R.id.ButtonSOC);
 
