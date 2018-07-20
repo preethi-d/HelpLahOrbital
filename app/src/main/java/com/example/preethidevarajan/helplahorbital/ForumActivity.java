@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 
 
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +27,12 @@ public class ForumActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     List<Question> questionList;
+    List<Answer> answerList;
     MyRecyclerViewAdapter adapter;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private DatabaseReference mDatabase;
-    private FirebaseAuth mAuth;
+    public RecyclerView.Adapter mAdapter;
+    public RecyclerView.LayoutManager mLayoutManager;
+    public DatabaseReference mDatabase;
+    public FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +45,25 @@ public class ForumActivity extends AppCompatActivity {
         mDatabase.keepSynced(true);
 
         questionList = new ArrayList<>();
+        answerList = new ArrayList<>();
 
         recyclerView  = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        questionList.add(new Question("what is recursion", "csboy1"));
+        questionList.add(new Question("what is recursion", "csboy2"));
+        questionList.add(new Question("what is recursion", "csboy3"));
+        questionList.add(new Question("what is recursion", "csboy4"));
+        questionList.add(new Question("what is recursion", "csboy5"));
+        questionList.add(new Question("what is recursion", "csboy6", ){
+        }));
 
 
+        MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, questionList);
 
-        Intent Extra = getIntent();
-        String textView = Extra.getStringExtra("question");
-
-
+        recyclerView.setAdapter(adapter);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -69,25 +77,42 @@ public class ForumActivity extends AppCompatActivity {
 
     }
 
-    /*protected void onStart() {
+    protected void onStart() {
         super.onStart();
-        FirebaseRecyclerAdapter<Question, QuestionViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Question, QuestionViewHolder>() {
+        FirebaseRecyclerAdapter<Question, QuestionViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Question, QuestionViewHolder>
+                (Question.class, R.layout.row, QuestionViewHolder.class, mDatabase) {
             @Override
             protected void populateViewHolder(QuestionViewHolder viewHolder, Question model, int position) {
-
+               /* viewHolder.setQuestion(model.getQuestion());
+                viewHolder.setUsername(model.getUsername());
+                viewHolder.setAnswer(model.getAnswer());
+                */
             }
         };
+
+        //recyclerView.setAdapter(firebaseRecyclerAdapter);
     }
 
-
+//for initializing textview, get and set text
     public static class QuestionViewHolder extends RecyclerView.ViewHolder {
-        View mview;
+        View mView;
 
         public QuestionViewHolder(View itemView) {
             super(itemView);
-            mview = itemView;
+            mView = itemView;
+        }
+        public void setQuestion(String question) {
+            TextView post_question = (TextView) mView.findViewById(R.id.questionview);
+            post_question.setText(question);
+        }
+        public void setUsername(String username) {
+
+        }
+
+        public void setAnswer(String answer) {
+
         }
     }
-    */
+
 
 }

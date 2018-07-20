@@ -59,8 +59,8 @@ public class AskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Question newQuestion = new Question(question.getText().toString(), username.getText().toString());
-                myRef.child("question").setValue(newQuestion.getQuestion());
-                myRef.child("username").setValue(newQuestion.getUsername());
+                myRef.child("Question").child("question").setValue(newQuestion.getQuestion());
+                myRef.child("Question").child("username").setValue(newQuestion.getUsername());
 
                 Intent intent = new Intent(AskActivity.this, ForumActivity.class);
                 intent.putExtra("question", question.getText().toString());
@@ -71,10 +71,5 @@ public class AskActivity extends AppCompatActivity {
         });
     }
 
-    /*public void openHomeActivity() {
-        Intent intent = new Intent(this, NavigationActivity.class);
-        startActivity(intent);
-    }
-    */
 
 }

@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
@@ -34,9 +34,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.firebaseui:firebase-ui-database:0.4.0'
-
-
-
+    implementation 'org.webjars.bower:github-com-martinbean-bootstrap-3-card:v0.2.0'
+    implementation 'com.android.support:cardview-v7:27.1.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
