@@ -55,11 +55,12 @@ public class SignUpActivity extends AppCompatActivity {
                 }
 
                 //check if password is alphanumeric
-                if(!pass_word.matches("^(?=.[A-Z])(?=.[0-9])(?=.*[a-z])[a-zA-Z0-9]+$")){
+                /*if(!pass_word.matches("^(?=.[A-Z])(?=.[0-9])(?=.*[a-z])[a-zA-Z0-9]+$")){
                     Toast.makeText(SignUpActivity.this, "Password must contain one " +
                             "upper and lower case letter and one number", Toast.LENGTH_LONG).show();
                     return;
                 }
+                */
 
 
                 mAuth.createUserWithEmailAndPassword(email, pass_word).

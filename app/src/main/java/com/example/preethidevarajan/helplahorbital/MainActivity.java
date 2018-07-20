@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     EditText username;
@@ -24,19 +31,20 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initializing xml ids for all buttons and widgets
-        username = (EditText) findViewById(R.id.editText);
-        password = (EditText) findViewById(R.id.editText2);
-        log_in = (Button) findViewById(R.id.button);
-        sign_up = (Button) findViewById(R.id.button2);
+
 
         //firebase auth instance
         auth = FirebaseAuth.getInstance();
+        log_in = findViewById(R.id.loginbutton);
+        sign_up = findViewById(R.id.signupbutton);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
 
         log_in.setOnClickListener(new View.OnClickListener() {
                                       @Override
@@ -69,6 +77,9 @@ public class MainActivity extends AppCompatActivity {
                                                               // error occurred
                                                               Toast.makeText(MainActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
                                                           } else {
+                                                              //log in success, update UI with signed-in users information
+                                                              //FirebaseUser user = auth.getCurrentUser();
+                                                              //updateUI(user);
                                                               openHomeActivity();
                                                           }
 
@@ -85,6 +96,14 @@ public class MainActivity extends AppCompatActivity {
                 openSignUpActivity();
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        //FirebaseUser currentUser = auth.getCurrentUser();
+        //updateUI(currentUser);
     }
 
 

@@ -37,7 +37,11 @@
         <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation_acitivty"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".AskActivity" />
+        <activity android:name=".ForumActivity" />
+        <activity android:name=".ModulesActivity" />
+        <activity android:name=".Question"></activity>
     </application>
 
 </manifest>
