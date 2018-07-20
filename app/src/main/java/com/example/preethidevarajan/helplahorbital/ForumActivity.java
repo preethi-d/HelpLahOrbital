@@ -57,8 +57,8 @@ public class ForumActivity extends AppCompatActivity {
         questionList.add(new Question("what is recursion", "csboy3"));
         questionList.add(new Question("what is recursion", "csboy4"));
         questionList.add(new Question("what is recursion", "csboy5"));
-        questionList.add(new Question("what is recursion", "csboy6", ){
-        }));
+        //questionList.add(new Question("what is recursion", "csboy6", );
+
 
 
         MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, questionList);
