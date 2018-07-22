@@ -32,7 +32,7 @@ public class AskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ask);
 
         //this will hold out collection of qns
-        final List<Question> questions = new ArrayList<>();
+        //final List<Question> questions = new ArrayList<>();
 
         Ask = findViewById(R.id.askButton);
         question = findViewById(R.id.questionedittext);
@@ -41,29 +41,7 @@ public class AskActivity extends AppCompatActivity {
         //DATABASE CODE HERE
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference myRef = database.getReference();
-        myRef.child("Question").addValueEventListener(new ValueEventListener() {
-            /*this method invoked anytime the data on the database changes.
-            additionally, it will be invoked as soon as we connect the listener and we can get
-            an initial snapshot of the data
-            */
 
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //get all children at this level
-                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-                for (DataSnapshot child: children) {
-
-                    Question question = dataSnapshot.getValue(Question.class);
-                    questions.add(question);
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
 
@@ -71,8 +49,7 @@ public class AskActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Question newQuestion = new Question(question.getText().toString(), username.getText().toString());
-                myRef.child("Question").child("question").setValue(newQuestion.getQuestion());
-                myRef.child("Question").child("username").setValue(newQuestion.getUsername());
+                myRef.child("Question").push().setValue(newQuestion);
 
                 Intent intent = new Intent(AskActivity.this, ForumActivity.class);
                 intent.putExtra("question", question.getText().toString());

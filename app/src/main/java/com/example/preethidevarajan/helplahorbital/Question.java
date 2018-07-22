@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import java.util.List;
 
-public class Question implements Parcelable{
+public class Question {
 
     private String question;
     private String username;
@@ -53,14 +53,4 @@ public class Question implements Parcelable{
 
     }
 
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
 }

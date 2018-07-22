@@ -33,7 +33,6 @@ public class ForumActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     List<Question> questionList;
     List<Answer> answerList;
-    MyRecyclerViewAdapter adapter;
     public RecyclerView.Adapter mAdapter;
     public RecyclerView.LayoutManager mLayoutManager;
     public DatabaseReference mDatabase;
@@ -46,27 +45,12 @@ public class ForumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("Question");
-        mDatabase.keepSynced(true);
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Intent intent = new Intent(ForumActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
 
-
-        questionList = new ArrayList<>();
-        answerList = new ArrayList<>();
-
-       /* questionList.add(new Question("what is recursion", "csboy1"));
-        questionList.add(new Question("what is recursion", "csboy2"));
-        questionList.add(new Question("what is recursion", "csboy3"));
-        questionList.add(new Question("what is recursion", "csboy4"));
-        questionList.add(new Question("what is recursion", "csboy5"));
-        */
-
-
-
-        //MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, questionList);
-
-        //recyclerView.setAdapter(adapter);
-
-
+        //initialise widget
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,18 +60,15 @@ public class ForumActivity extends AppCompatActivity {
             }
         });
 
+        //CRUD Display
 
-
-        recyclerView  = (RecyclerView) findViewById(R.id.my_recycler_view);
+        questionList = new ArrayList<>();
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
-        adapter = new MyRecyclerViewAdapter(this, questionList);
+        final MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, questionList);
         recyclerView.setAdapter(adapter);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        final MyRecyclerViewAdapter adapter = new MyRecyclerViewAdapter(this, questionList);
-
-        recyclerView.setAdapter(adapter);
 
         getFirebaseData(new QuestionCallBack() {
             @Override
@@ -111,7 +92,7 @@ public class ForumActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //result held here
-                for (DataSnapshot dataSnap: dataSnapshot.getChildren()) {
+                for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
                     Question question = new Question();
                     String qn = String.valueOf(dataSnap.child("question").getValue());
                     String username = String.valueOf(dataSnap.child("username").getValue());
@@ -129,7 +110,9 @@ public class ForumActivity extends AppCompatActivity {
 
     }
 
-    protected void onStart() {
+}
+
+    /*protected void onStart() {
         super.onStart();
         FirebaseRecyclerAdapter<Question, QuestionViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Question, QuestionViewHolder>
                 (Question.class, R.layout.row, QuestionViewHolder.class, mDatabase) {
@@ -165,6 +148,7 @@ public class ForumActivity extends AppCompatActivity {
 
         }
     }
+    */
 
 
-}
+
