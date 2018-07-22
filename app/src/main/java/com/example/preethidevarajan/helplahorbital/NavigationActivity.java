@@ -29,12 +29,12 @@ public class NavigationActivity extends AppCompatActivity
 
         // Check if user is logged in
         // If user is not logged in, direct user to login page
-       /* if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+       if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Intent intent = new Intent(NavigationActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
         }
-        */
+
 
         SOC = (Button) findViewById(R.id.ButtonSOC);
 

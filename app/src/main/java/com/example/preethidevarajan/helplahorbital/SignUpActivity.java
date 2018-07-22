@@ -1,5 +1,6 @@
 package com.example.preethidevarajan.helplahorbital;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -72,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                         } else {
                             //signup successful, go to home activity
-                            openHomeActivity();
+                            openForumActivity();
                             finish();
                         }
                     }
@@ -83,6 +84,11 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     }
+    public void openForumActivity() {
+        Intent intent = new Intent(this, ForumActivity.class);
+        startActivity(intent);
+    }
+
 
     public void openHomeActivity() {
         Intent intent = new Intent(this, HomeActivity.class);

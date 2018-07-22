@@ -11,57 +11,42 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="154dp"
             android:padding="8dp">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="120dp"
-                android:layout_height="90dp"
-                android:padding="4dp" />
-
-            <TextView
-                android:id="@+id/questionview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/imageView" />
 
 
             <TextView
                 android:id="@+id/usernameview"
+                android:layout_width="103dp"
+                android:layout_height="34dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="112dp"
+                android:layout_marginEnd="263dp" />
+
+
+            <Button
+                android:id="@+id/answers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/questionview"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp" />
-
-
-
-            <TextView
-                android:id="@+id/answersview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/usernameview"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_toRightOf="@id/imageView"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="8dp"
                 android:background="@color/colorPrimary"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
+                android:text="Answers"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textViewPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/answersview"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
+                android:id="@+id/questionview"
+                android:layout_width="255dp"
+                android:layout_height="86dp"
+                android:layout_alignStart="@+id/usernameview"
+                android:layout_centerVertical="true"
+                android:text="TextView" />
 
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textStyle="bold" />
 
         </RelativeLayout>
 

@@ -1,21 +1,23 @@
 package com.example.preethidevarajan.helplahorbital;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import java.util.List;
 
-public class Question {
+public class Question implements Parcelable{
 
     private String question;
     private String username;
-    private List<String> answer;
+    private List<String> answerList;
 
-    public Question(String question, String username, List<String> answer){
+    public Question(String question, String username, List<String> answerList){
 
         this.question = question;
         this.username = username;
-        this.answer = answer;
+        this.answerList = answerList;
 
     }
 
@@ -34,11 +36,6 @@ public class Question {
         return this.username;
     }
 
-    /*public String getAnswer() {
-        return this.answer;
-    }
-    */
-
     public void setQuestion(String question) {
         this.question = question;
     }
@@ -47,10 +44,23 @@ public class Question {
         this.username = username;
     }
 
-    /*public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setAnswer(String answer) {
+        this.answerList.add(answer);
     }
-    */
 
 
+    public Question() {
+
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 }

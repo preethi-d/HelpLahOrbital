@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                                                               //log in success, update UI with signed-in users information
                                                               //FirebaseUser user = auth.getCurrentUser();
                                                               //updateUI(user);
-                                                              openHomeActivity();
+                                                              openForumActivity();
                                                           }
 
 
@@ -106,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
         //updateUI(currentUser);
     }
 
+    public void openForumActivity() {
+        Intent intent = new Intent(this, ForumActivity.class);
+        startActivity(intent);
+    }
 
 
     public void openHomeActivity() {
