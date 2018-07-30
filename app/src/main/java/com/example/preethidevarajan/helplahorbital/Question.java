@@ -1,5 +1,7 @@
 package com.example.preethidevarajan.helplahorbital;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -8,21 +10,18 @@ import java.util.List;
 public class Question {
 
     private String question;
-    private String username;
-    private List<String> answer;
+    private List<Answer> answerList;
 
-    public Question(String question, String username, List<String> answer){
+    public Question(String question, List<Answer> answerList){
 
         this.question = question;
-        this.username = username;
-        this.answer = answer;
+        this.answerList = answerList;
 
     }
 
-    public Question(String question, String username){
+    public Question(String question){
 
         this.question = question;
-        this.username = username;
 
     }
 
@@ -30,12 +29,8 @@ public class Question {
         return this.question;
     }
 
-    public String getUsername() {
+    /*public String getUsername() {
         return this.username;
-    }
-
-    /*public String getAnswer() {
-        return this.answer;
     }
     */
 
@@ -43,14 +38,19 @@ public class Question {
         this.question = question;
     }
 
-    public void setUsername(String username) {
+    /*public void setUsername(String username) {
         this.username = username;
-    }
-
-    /*public void setAnswer(String answer) {
-        this.answer = answer;
     }
     */
 
+    //add answer to the list
+    public void addAnswer(Answer Answer) {
+        this.answerList.add(Answer);
+    }
+
+
+    public Question() {
+
+    }
 
 }

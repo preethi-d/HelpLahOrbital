@@ -18,23 +18,23 @@ import java.util.List;
 
 
 
-public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
+public class AnswerRecyclerAdapter extends RecyclerView.Adapter<AnswerRecyclerAdapter.ViewHolder> {
 
     public Context ctxt;
-    public List<Question> QuestionList;
+    public List<Answer> answerList;
 
     //recyclerview maintains a pool of cardviews
-    public MyRecyclerViewAdapter(Context ctxt, List<Question> questionList) {
+    public AnswerRecyclerAdapter(Context ctxt, List<Answer> answerList) {
         this.ctxt = ctxt;
-        QuestionList = questionList;
+        this.answerList = answerList;
     }
 
-    //oncreateviewholder creates each viewHolder based on the row.xml
+    //oncreateviewholder creates each viewHolder based on the row_answer.xml
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         CardView cardView = (CardView) LayoutInflater.from(ctxt)
-                .inflate(R.layout.row , parent, false);
+                .inflate(R.layout.row_answer , parent, false);
         return new ViewHolder(cardView);
     }
 
@@ -42,30 +42,23 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CardView cardView = holder.mCardView;
-        TextView questionview = cardView.findViewById(R.id.questionview);
-        TextView usernameview = cardView.findViewById(R.id.usernameview);
-        Button Answers = cardView.findViewById(R.id.answers);
+        TextView answerview = cardView.findViewById(R.id.answerview);
+        //TextView usernameview = cardView.findViewById(R.id.usernameview);
+        //Button like = cardView.findViewById(R.id.likebutton);
 
 
-        Question question = QuestionList.get(position);
-        questionview.setText(question.getQuestion());
-        Answers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ctxt, AnswerActivity.class );
-                ctxt.startActivity(intent);
-            }
-        });
+        Answer answer = answerList.get(position);
+        answerview.setText(answer.getAnswer());
 
     }
 
     @Override
     public int getItemCount() {
 
-        if (QuestionList==null) {
+        if (answerList==null) {
             return 0;
         } else {
-            return QuestionList.size();
+            return answerList.size();
         }
     }
 
