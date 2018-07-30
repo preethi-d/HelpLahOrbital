@@ -43,7 +43,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CardView cardView = holder.mCardView;
         TextView questionview = cardView.findViewById(R.id.questionview);
-        TextView usernameview = cardView.findViewById(R.id.usernameview);
         Button Answers = cardView.findViewById(R.id.answers);
 
 
