@@ -28,10 +28,7 @@ public class AnswerActivity extends AppCompatActivity {
     ImageButton backToForumPage;
     RecyclerView recyclerView;
     List<Answer> answerList;
-    public RecyclerView.Adapter mAdapter;
-    public RecyclerView.LayoutManager mLayoutManager;
-    public DatabaseReference mDatabase;
-    public FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +89,6 @@ public class AnswerActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
                     Answer answer = new Answer();
                     String ans = String.valueOf(dataSnap.child("answer").getValue());
-                    //String username = String.valueOf(dataSnap.child("username").getValue());
                     answer.setAnswer(ans);
                     answerCallBack.onCallBack(answer);
 

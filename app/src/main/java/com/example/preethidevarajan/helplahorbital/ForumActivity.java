@@ -32,11 +32,7 @@ public class ForumActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     List<Question> questionList;
-    List<Answer> answerList;
-    public RecyclerView.Adapter mAdapter;
-    public RecyclerView.LayoutManager mLayoutManager;
-    public DatabaseReference mDatabase;
-    public FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +91,6 @@ public class ForumActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
                     Question question = new Question();
                     String qn = String.valueOf(dataSnap.child("question").getValue());
-                    String username = String.valueOf(dataSnap.child("username").getValue());
                     question.setQuestion(qn);
                     questionCallBack.onCallBack(question);
                 }
@@ -110,44 +105,6 @@ public class ForumActivity extends AppCompatActivity {
     }
 
 }
-
-    /*protected void onStart() {
-        super.onStart();
-        FirebaseRecyclerAdapter<Question, QuestionViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Question, QuestionViewHolder>
-                (Question.class, R.layout.row, QuestionViewHolder.class, mDatabase) {
-            @Override
-            protected void populateViewHolder(QuestionViewHolder viewHolder, Question model, int position) {
-                viewHolder.setQuestion(model.getQuestion());
-                viewHolder.setUsername(model.getUsername());
-                //viewHolder.setAnswer(model.getAnswer());
-
-            }
-        };
-
-        //recyclerView.setAdapter(firebaseRecyclerAdapter);
-    }
-
-//for initializing textview, get and set text
-    public static class QuestionViewHolder extends RecyclerView.ViewHolder {
-        View mView;
-
-        public QuestionViewHolder(View itemView) {
-            super(itemView);
-            mView = itemView;
-        }
-        public void setQuestion(String question) {
-            TextView post_question = (TextView) mView.findViewById(R.id.questionview);
-            post_question.setText(question);
-        }
-        public void setUsername(String username) {
-
-        }
-
-        public void setAnswer(String answer) {
-
-        }
-    }
-    */
 
 
 
