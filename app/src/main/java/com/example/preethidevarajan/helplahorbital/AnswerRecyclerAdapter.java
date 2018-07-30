@@ -43,8 +43,6 @@ public class AnswerRecyclerAdapter extends RecyclerView.Adapter<AnswerRecyclerAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         CardView cardView = holder.mCardView;
         TextView answerview = cardView.findViewById(R.id.answerview);
-        //TextView usernameview = cardView.findViewById(R.id.usernameview);
-        //Button like = cardView.findViewById(R.id.likebutton);
 
 
         Answer answer = answerList.get(position);
