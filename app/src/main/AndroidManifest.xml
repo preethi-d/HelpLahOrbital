@@ -42,7 +42,8 @@
         <activity android:name=".ForumActivity" />
         <activity android:name=".ModulesActivity" />
         <activity android:name=".AnswerActivity" />
-        <activity android:name=".AddAnswerActivity"></activity>
+        <activity android:name=".AddAnswerActivity" />
+        <activity android:name=".AnswerRecyclerAdapter"></activity>
     </application>
 
 </manifest>

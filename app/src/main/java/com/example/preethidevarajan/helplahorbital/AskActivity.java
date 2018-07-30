@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +37,7 @@ public class AskActivity extends AppCompatActivity {
 
         Ask = findViewById(R.id.askButton);
         question = findViewById(R.id.questionedittext);
-        username = findViewById(R.id.username);
+
 
         //DATABASE CODE HERE
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -44,11 +45,11 @@ public class AskActivity extends AppCompatActivity {
 
 
 
-
         Ask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Question newQuestion = new Question(question.getText().toString(), username.getText().toString());
+                User user = getIntent().getParcelableExtra("user");
+                Question newQuestion = new Question(question.getText().toString());
                 myRef.child("Question").push().setValue(newQuestion);
 
                 Intent intent = new Intent(AskActivity.this, ForumActivity.class);

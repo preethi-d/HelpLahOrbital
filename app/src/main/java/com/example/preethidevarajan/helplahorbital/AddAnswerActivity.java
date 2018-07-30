@@ -10,9 +10,6 @@ import android.widget.ImageButton;
 public class AddAnswerActivity extends AppCompatActivity {
 
     Button answer;
-    ImageButton camera;
-    ImageButton attach;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +17,6 @@ public class AddAnswerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_answer);
 
         answer = findViewById(R.id.answerButton);
-        camera = findViewById(R.id.camera);
-        attach = findViewById(R.id.attachment);
 
         answer.setOnClickListener(new View.OnClickListener() {
             @Override

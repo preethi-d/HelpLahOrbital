@@ -22,4 +22,11 @@
         app:srcCompat="@android:drawable/ic_input_add"
         tools:layout_editor_absoluteX="303dp"
         tools:layout_editor_absoluteY="491dp" />
+
+    <!-- A RecyclerView with some commonly used attributes -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/answersrecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 </android.support.constraint.ConstraintLayout>

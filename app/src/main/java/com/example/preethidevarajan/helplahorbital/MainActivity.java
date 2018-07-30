@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    @Override
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                                       public void onClick(View view) {
                                           //what happens when they click Log In
                                           //If use hasnt signed up,
-                                          //Toast.makeText(MainActivity.this, "Account does not exist", Toast.LENGTH_LONG).show();
+                                          Toast.makeText(MainActivity.this, "Account does not exist", Toast.LENGTH_LONG).show();
                                           String email = username.getText().toString().trim();
                                           String pass_word = password.getText().toString().trim();
 
@@ -101,9 +101,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        //FirebaseUser currentUser = auth.getCurrentUser();
-        //updateUI(currentUser);
+
     }
 
     public void openForumActivity() {

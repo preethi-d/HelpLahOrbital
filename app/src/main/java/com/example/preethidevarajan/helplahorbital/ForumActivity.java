@@ -95,9 +95,8 @@ public class ForumActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnap : dataSnapshot.getChildren()) {
                     Question question = new Question();
                     String qn = String.valueOf(dataSnap.child("question").getValue());
-                    String username = String.valueOf(dataSnap.child("username").getValue());
+                    //String username = String.valueOf(dataSnap.child("username").getValue());
                     question.setQuestion(qn);
-                    question.setUsername(username);
                     questionCallBack.onCallBack(question);
                 }
             }

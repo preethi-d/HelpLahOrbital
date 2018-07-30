@@ -10,21 +10,18 @@ import java.util.List;
 public class Question {
 
     private String question;
-    private String username;
-    private List<String> answerList;
+    private List<Answer> answerList;
 
-    public Question(String question, String username, List<String> answerList){
+    public Question(String question, List<Answer> answerList){
 
         this.question = question;
-        this.username = username;
         this.answerList = answerList;
 
     }
 
-    public Question(String question, String username){
+    public Question(String question){
 
         this.question = question;
-        this.username = username;
 
     }
 
@@ -32,20 +29,23 @@ public class Question {
         return this.question;
     }
 
-    public String getUsername() {
+    /*public String getUsername() {
         return this.username;
     }
+    */
 
     public void setQuestion(String question) {
         this.question = question;
     }
 
-    public void setUsername(String username) {
+    /*public void setUsername(String username) {
         this.username = username;
     }
+    */
 
-    public void setAnswer(String answer) {
-        this.answerList.add(answer);
+    //add answer to the list
+    public void addAnswer(Answer Answer) {
+        this.answerList.add(Answer);
     }
 
 
